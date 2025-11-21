@@ -1,0 +1,24 @@
+<mat-card class="login-container">
+  <h2>Iniciar sesión</h2>
+  <form (ngSubmit)="login()">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Correo</mat-label>
+      <input matInput type="email" [(ngModel)]="correo" name="correo" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" [(ngModel)]="clave" name="clave" required />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" class="full-width" type="submit">
+      Ingresar
+    </button>
+
+    <p *ngIf="loginError" style="color: red;">Credenciales incorrectas</p>
+
+    <button mat-button color="accent" class="full-width" (click)="irARegistro()">
+      ¿No tienes cuenta? Regístrate aquí
+    </button>
+  </form>
+</mat-card>

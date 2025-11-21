@@ -1,0 +1,66 @@
+<mat-card class="registro-container" *ngIf="!cuentaCreada">
+  <h2>Crear cuenta</h2>
+
+  <form [formGroup]="registroForm" (ngSubmit)="registrarUsuario()">
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" required />
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Apellido</mat-label>
+      <input matInput formControlName="apellido" required />
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Documento</mat-label>
+      <input matInput formControlName="documento" required />
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Teléfono</mat-label>
+      <input matInput formControlName="telefono" required />
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Correo</mat-label>
+      <input matInput formControlName="correo" required />
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" formControlName="contraseña" required />
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      class="full-width"
+      type="submit"
+      [disabled]="registrando"
+    >
+      {{ registrando ? 'Registrando...' : 'Registrar' }}
+    </button>
+
+    <p *ngIf="errorMensaje" style="color: red;">{{ errorMensaje }}</p>
+
+    <div class="acciones">
+      <p>¿Ya tienes una cuenta?</p>
+      <button mat-button color="accent" (click)="volverLogin()">Iniciar sesión</button>
+    </div>
+  </form>
+</mat-card>
+
+<mat-card class="registro-container" *ngIf="cuentaCreada">
+  <h2>¡Registro exitoso!</h2>
+  <p>Tu cuenta se creó correctamente. Aquí tienes tus datos:</p>
+
+  <div class="datos">
+    <p><strong>Nombre:</strong> {{ cuentaCreada.usuario.nombre }} {{ cuentaCreada.usuario.apellido }}</p>
+    <p><strong>Documento:</strong> {{ cuentaCreada.usuario.documento }}</p>
+    <p><strong>Número de cuenta:</strong> {{ cuentaCreada.numeroCuenta }}</p>
+    <p><strong>Saldo:</strong> {{ cuentaCreada.saldo | currency:'COP' }}</p>
+  </div>
+
+  <button mat-raised-button color="primary" (click)="volverLogin()">Ir al login</button>
+</mat-card>

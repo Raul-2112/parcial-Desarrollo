@@ -1,0 +1,22 @@
+<h2>Mis Transferencias</h2>
+
+<div *ngIf="cargando">Cargando transferencias...</div>
+
+<div *ngIf="error" style="color: red;">{{ error }}</div>
+
+<div *ngIf="!cargando && transferencias.length === 0 && !error">
+  No tienes transferencias registradas.
+</div>
+
+<mat-accordion *ngIf="!cargando && transferencias.length > 0">
+  <mat-expansion-panel *ngFor="let t of transferencias">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Transferencia
+      </mat-panel-title>
+      <mat-panel-description>
+        {{ t.fecha }} - ${{ t.total }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+</mat-accordion>
