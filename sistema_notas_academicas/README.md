@@ -203,4 +203,4 @@ Este proyecto es de código abierto y está disponible para fines educativos.
 
 ---
 
-**Desarrollado con ❤️ usando Flutter & Dart**
+**Desarrollado con  usando Flutter & Dart**
